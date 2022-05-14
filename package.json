@@ -1,0 +1,18 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Weather App made with data from https://weatherdbi.herokuapp.com/data/weather",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "keywords": [],
+  "author": "Fabian Bandini",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "sass": "^1.51.0"
+  }
+}
