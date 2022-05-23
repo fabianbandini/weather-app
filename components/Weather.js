@@ -3,7 +3,7 @@ import WeatherAPI from "../lib/api/weatherAPI";
 import styles from "./weather.module.scss";
 import WeatherEntry from "./WeatherEntry";
 
-export default function Weather(){
+export default function Weather() {
     const [input, setInput] = useState("");
     const [error, setError] = useState("");
     const [currentResp, setCurrentResp] = useState(null);
@@ -12,10 +12,11 @@ export default function Weather(){
         setInput(e.target.value);
     }
 
-    const handleClick = async () =>{
+    const handleClick = async (e) => {
+        e.preventDefault()
         const resp = await WeatherAPI.get(input).then()
 
-        if(resp){
+        if (resp) {
             setCurrentResp(resp);
             return;
         }
@@ -28,9 +29,11 @@ export default function Weather(){
             {
                 (currentResp) && <WeatherEntry region={currentResp}/>
             }
-            <input placeholder="location" onChange={handleInput}/>
-            <p>{error}</p>
-            <button onClick={handleClick}>Search</button>
+            <form onSubmit={handleClick}>
+                <input placeholder="location" onChange={handleInput}/>
+                <p>{error}</p>
+                <button type={"submit"}>Search</button>
+            </form>
         </div>
     )
 }
