@@ -2,6 +2,7 @@ import {useState} from "react";
 import WeatherAPI from "../lib/api/weatherAPI";
 import styles from "./weather.module.scss";
 import WeatherEntry from "./WeatherEntry";
+import {toast} from "react-toastify";
 
 export default function Weather() {
     const [input, setInput] = useState("");
@@ -14,6 +15,12 @@ export default function Weather() {
 
     const handleClick = async (e) => {
         e.preventDefault()
+
+        if(input.length === 0){
+            toast.error("Input can't be empty!")
+            return;
+        }
+
         const resp = await WeatherAPI.get(input).then()
 
         if (resp) {
